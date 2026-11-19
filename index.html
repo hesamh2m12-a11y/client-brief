@@ -63,7 +63,7 @@ dialog h3{margin:0 0 10px;font-size:17px}
 [hidden]{display:none!important}
 .tip{background:var(--b2);border:1px solid var(--ln);border-radius:10px;padding:8px 12px;font-size:13.5px;margin-bottom:12px}
 .sr{border:1px solid var(--ln);border-radius:12px;padding:10px;margin-bottom:10px;background:#fff}
-.sr .l1{display:flex;gap:8px}.sr .l1 select{flex:1;min-width:0}.sr .cn{margin-top:8px}
+.sr .l1{display:flex;gap:8px}.sr .l1 select{flex:1;min-width:0}.sr .cn{margin-top:8px}.sr .l1 .mh{flex:1;align-self:center;color:var(--b)}
 .sr .l2{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
 .sr label{display:block;font-size:12px;color:var(--mut);margin-bottom:2px;line-height:1.4}.sr .l2 input{padding:8px}
 input[data-m]{direction:ltr;letter-spacing:.02em}html[dir=rtl] input[data-m]{text-align:right}
@@ -85,6 +85,8 @@ input[data-m]{direction:ltr;letter-spacing:.02em}html[dir=rtl] input[data-m]{tex
  table{width:100%;border-collapse:collapse}
  th,td{border:1px solid #d3e0fa;padding:3px 8px;text-align:start;font-size:10.5pt}
  th{background:#f1f6ff}
+ .mp{break-before:page}.mp:first-child{break-before:auto}.big p{min-height:55mm}
+ .sg{display:flex;gap:40px;margin-top:36px}.sg div{flex:1;border-top:1px solid #14213d;padding-top:4px;text-align:center;font-size:10pt}
  .pg>div,tr{break-inside:avoid}
 }
 </style>
@@ -117,8 +119,8 @@ const ld=(k,d)=>{try{const v=localStorage.getItem('brief.'+k);return v?JSON.pars
 const sv=(k,v)=>{try{localStorage.setItem('brief.'+k,JSON.stringify(v))}catch(e){mem[k]=v}};
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const U={
-fa:{title:'فرم نیازسنجی پروژه',sub:'اطلاعات شما به‌صورت خودکار ذخیره می‌شود',next:'مرحله بعد',prev:'قبلی',print:'چاپ / PDF',recs:'پرونده‌ها',newr:'پرونده جدید',saved:'ذخیره شد',wm:'متن واترمارک',exp:'خروجی بکاپ',imp:'ورود بکاپ',open:'باز کردن',del:'حذف',none:'بدون نام',add:'+ افزودن فضا',sn:'نام فضا',sc:'ظرفیت هر واحد (نفر)',sa:'متراژ هر واحد (m²)',total:'مجموع متراژ تقریبی',close:'بستن',dc:'این پرونده حذف شود؟',fin:'پایان و چاپ',step:'مرحله',sum:'خلاصه نیازسنجی پروژه',m2:'متر مربع',eo:'مخصوص مهندس',tip:'ظرفیت و متراژ را برای «یک واحد» از هر فضا وارد کنید و تعداد واحدها را در «تعداد» بنویسید. مثال: ۳ اتاق خواب ۱۵ متری ← تعداد ۳، متراژ ۱۵.',pick:'انتخاب فضا…',oth:'سایر (نوشتن دستی)…',sq:'تعداد',frm:'برای چاپ یا PDF، فایل را دانلود کنید و مستقیماً در مرورگر (Chrome / Safari / Edge) باز کنید.',inc:'درج این بخش در خروجی چاپ',al:'زیربنای مجاز (تراکم × مساحت زمین)',fp:'سطح اشغال (پی)',fb:'طبقات قابل‌اجرا طبق تراکم',nl:'مساحت زمین را در مرحله ۱ وارد کنید.',w1:'⚠ تعداد طبقات مدنظر از حداکثر مجاز بیشتر است.',w2:'⚠ با سطح اشغال کامل، زیربنا از تراکم مجاز بیشتر می‌شود؛ باید سطح اشغال کمتر شود.',w3:'⚠ مجموع متراژ فضاها از زیربنای مجاز بیشتر است.',ok:'✓ با اطلاعات واردشده، مغایرتی دیده نشد.'},
-en:{title:'Project Client Brief',sub:'Your answers are saved automatically',next:'Next',prev:'Back',print:'Print / PDF',recs:'Records',newr:'New record',saved:'Saved',wm:'Watermark text',exp:'Export backup',imp:'Import backup',open:'Open',del:'Delete',none:'Untitled',add:'+ Add space',sn:'Space name',sc:'Capacity per unit (persons)',sa:'Area per unit (m²)',total:'Approx. total area',close:'Close',dc:'Delete this record?',fin:'Finish & print',step:'Step',sum:'Project Brief Summary',m2:'m²',eo:'Engineer only',tip:'Enter capacity and area for ONE single unit of each space, and put the number of units in Qty. Example: 3 bedrooms of 15 m² each → Qty 3, Area 15.',pick:'Select a space…',oth:'Other (type manually)…',sq:'Qty',frm:'To print or save as PDF, download this file and open it directly in your browser (Chrome / Safari / Edge).',inc:'Include this section in printout',al:'Allowed floor area (density × land)',fp:'Footprint (coverage)',fb:'Floors allowed by density',nl:'Enter land area in step 1.',w1:'⚠ Desired floors exceed the maximum allowed.',w2:'⚠ At full coverage the floor area exceeds allowed density; coverage must be reduced.',w3:'⚠ Total space area exceeds the allowed floor area.',ok:'✓ No conflict found with the entered data.'}};
+fa:{title:'فرم نیازسنجی پروژه',sub:'اطلاعات شما به‌صورت خودکار ذخیره می‌شود',next:'مرحله بعد',prev:'قبلی',print:'چاپ / PDF',recs:'پرونده‌ها',newr:'پرونده جدید',saved:'ذخیره شد',wm:'متن واترمارک',exp:'خروجی پشتیبان',imp:'ورود پشتیبان',open:'باز کردن',del:'حذف',none:'بدون نام',add:'+ افزودن فضا',sn:'نام فضا',sc:'ظرفیت هر واحد (نفر)',sa:'متراژ هر واحد (m²)',total:'مجموع متراژ تقریبی',close:'بستن',dc:'این پرونده حذف شود؟',fin:'پایان و چاپ',step:'مرحله',sum:'خلاصه نیازسنجی پروژه',m2:'متر مربع',eo:'مخصوص مهندس',mt:'جلسه',mdt:'تاریخ جلسه',mnx:'تاریخ جلسه بعدی',mat:'حاضرین',msb:'موضوع جلسه',mmn:'شرح مذاکرات',mdc:'تصمیمات و اقدامات بعدی',mpr:'چاپ / PDF صورت‌جلسه',madd:'+ افزودن جلسه',minu:'صورت‌جلسه',sg1:'امضای مهندس',sg2:'امضای کارفرما',mtip:'برای هر جلسه یک تاریخ و صورت‌جلسه ثبت کنید. در PDF نهایی، صورت‌جلسه هر تاریخ در یک صفحه جداگانه چاپ می‌شود.',tip:'ظرفیت و متراژ را برای «یک واحد» از هر فضا وارد کنید و تعداد واحدها را در «تعداد» بنویسید. مثال: ۳ اتاق خواب ۱۵ متری ← تعداد ۳، متراژ ۱۵.',pick:'انتخاب فضا…',oth:'سایر (نوشتن دستی)…',sq:'تعداد',frm:'برای چاپ یا PDF، فایل را دانلود کنید و مستقیماً در مرورگر (Chrome / Safari / Edge) باز کنید.',inc:'درج این بخش در خروجی چاپ',al:'زیربنای مجاز (تراکم × مساحت زمین)',fp:'سطح اشغال (پی)',fb:'طبقات قابل‌اجرا طبق تراکم',nl:'مساحت زمین را در مرحله ۱ وارد کنید.',w1:'⚠ تعداد طبقات مدنظر از حداکثر مجاز بیشتر است.',w2:'⚠ با سطح اشغال کامل، زیربنا از تراکم مجاز بیشتر می‌شود؛ باید سطح اشغال کمتر شود.',w3:'⚠ مجموع متراژ فضاها از زیربنای مجاز بیشتر است.',ok:'✓ با اطلاعات واردشده، مغایرتی دیده نشد.'},
+en:{title:'Project Client Brief',sub:'Your answers are saved automatically',next:'Next',prev:'Back',print:'Print / PDF',recs:'Records',newr:'New record',saved:'Saved',wm:'Watermark text',exp:'Export backup',imp:'Import backup',open:'Open',del:'Delete',none:'Untitled',add:'+ Add space',sn:'Space name',sc:'Capacity per unit (persons)',sa:'Area per unit (m²)',total:'Approx. total area',close:'Close',dc:'Delete this record?',fin:'Finish & print',step:'Step',sum:'Project Brief Summary',m2:'m²',eo:'Engineer only',mt:'Meeting',mdt:'Meeting date',mnx:'Next meeting date',mat:'Attendees',msb:'Subject',mmn:'Discussion',mdc:'Decisions & action items',mpr:'Print / PDF minutes',madd:'+ Add meeting',minu:'Meeting Minutes',sg1:'Engineer signature',sg2:'Client signature',mtip:'Record a date and minutes for each meeting. In the final PDF, each meeting’s minutes print on a separate page.',tip:'Enter capacity and area for ONE single unit of each space, and put the number of units in Qty. Example: 3 bedrooms of 15 m² each → Qty 3, Area 15.',pick:'Select a space…',oth:'Other (type manually)…',sq:'Qty',frm:'To print or save as PDF, download this file and open it directly in your browser (Chrome / Safari / Edge).',inc:'Include this section in printout',al:'Allowed floor area (density × land)',fp:'Footprint (coverage)',fb:'Floors allowed by density',nl:'Enter land area in step 1.',w1:'⚠ Desired floors exceed the maximum allowed.',w2:'⚠ At full coverage the floor area exceeds allowed density; coverage must be reduced.',w3:'⚠ Total space area exceeds the allowed floor area.',ok:'✓ No conflict found with the entered data.'}};
 const SP=[['اتاق خواب','Bedroom'],['اتاق خواب مستر','Master bedroom'],['پذیرایی / نشیمن','Living room'],['آشپزخانه','Kitchen'],['سرویس بهداشتی','Restroom'],['حمام','Bathroom'],['ورودی / هال','Entrance / Hall'],['لابی','Lobby'],['راه‌پله','Staircase'],['آسانسور','Elevator'],['پارکینگ','Parking'],['انباری','Storage'],['اتاق کار / دفتر','Office / Study'],['اتاق جلسات','Meeting room'],['سالن اجتماعات','Conference hall'],['فروشگاه / مغازه','Shop / Retail'],['بالکن / تراس','Balcony / Terrace'],['حیاط / فضای سبز','Yard / Garden'],['موتورخانه / تأسیسات','Mechanical room'],['نمازخانه','Prayer room']];
 const O={
 main:[['مسکونی','Residential'],['تجاری','Commercial'],['اداری','Office'],['آموزشی','Educational'],['درمانی','Healthcare'],['صنعتی','Industrial'],['گردشگری / فرهنگی','Hospitality / Cultural'],['ترکیبی','Mixed-use']],
@@ -131,7 +133,7 @@ const S=[
 {t:['کارفرما و پروژه','Client & Project'],f:[
 ['owner','text',['نام مالک / کارفرما','Owner / Client name']],['phone','tel',['شماره تماس','Phone']],
 ['email','email',['ایمیل','Email']],['pname','text',['نام پروژه','Project name']],
-['addr','text',['آدرس / شهر زمین','Site address / city'],1],['land','number',['مساحت زمین (m²)','Land area (m²)']],['date','date',['تاریخ جلسه','Meeting date']]]},
+['addr','text',['آدرس / شهر زمین','Site address / city'],1],['land','number',['مساحت زمین (m²)','Land area (m²)']]]},
 {t:['هدف و کاربری','Purpose & Use'],f:[
 ['goal','textarea',['هدف از ساخت','Purpose of construction'],1],['main','select',['کاربری اصلی','Primary use'],0,O.main],
 ['sec','text',['کاربری فرعی','Secondary use']],['users','text',['کاربران اصلی','Main users']],['ucount','number',['تعداد کاربران','Number of users']],['floors','number',['تعداد طبقات مدنظر کارفرما','Desired number of floors']]]},
@@ -147,10 +149,13 @@ const S=[
 {t:['بودجه و زمان','Budget & Schedule'],f:[
 ['budget','money',['بودجه پروژه','Project budget']],['cur','select',['واحد پول','Currency'],0,O.cur],
 ['start','date',['زمان شروع مدنظر','Desired start']],['dur','number',['مدت اجرا (ماه)','Duration (months)']],
-['prio','select',['اولویت اصلی','Main priority'],1,O.pri]]}];
+['prio','select',['اولویت اصلی','Main priority'],1,O.pri]]},
+{t:['جلسات و صورت‌جلسه','Meetings & Minutes'],mt:1}];
 let lang=ld('lang','fa'),db=ld('db',{}),cur=ld('cur',null),step=0,tm;
 const today=()=>new Date().toISOString().slice(0,10);
 const D=()=>db[cur],T=a=>a[lang=='fa'?0:1],u=k=>U[lang][k];
+const bm=()=>({dt:today(),at:'',sub:'',mn:'',dec:'',nx:''});
+const fd=v=>{if(!v)return'';const x=new Date(v+'T00:00:00');return isNaN(x)?v:x.toLocaleDateString(lang=='fa'?'fa-IR':'en-GB',{year:'numeric',month:'long',day:'numeric'})};
 const fmM=v=>String(v??'').replace(/\B(?=(\d{3})+(?!\d))/g,',');
 const toEn=x=>x.replace(/[۰-۹]/g,c=>c.charCodeAt(0)-1776).replace(/[٠-٩]/g,c=>c.charCodeAt(0)-1632);
 function fmtMoney(t){const pos=t.selectionStart,b=toEn(t.value.slice(0,pos)).replace(/\D/g,'').length,raw=toEn(t.value).replace(/\D/g,'');
@@ -159,11 +164,11 @@ const qn=s=>s.q===''||s.q==null?1:(parseFloat(s.q)||0);
 const tarea=d=>d.spaces.reduce((a,s)=>a+(parseFloat(s.a)||0)*qn(s),0);
 const fmtN=x=>x.toLocaleString(lang=='fa'?'fa-IR':'en-US',{maximumFractionDigits:1});
 const sname=s=>{const k=s.k??(s.n?'o':'');return k===''||k==='o'?(s.n||''):T(SP[+k])};
-function newRec(){prune();cur=Date.now().toString(36);db[cur]={date:today(),spaces:[{k:'',n:'',c:'',a:'',q:'1'}],mep:[]};sv('cur',cur);sv('db',db);step=0}
+function newRec(){prune();cur=Date.now().toString(36);db[cur]={date:today(),spaces:[{k:'',n:'',c:'',a:'',q:'1'}],mep:[],meets:[bm()]};sv('cur',cur);sv('db',db);step=0}
 function prune(){if(cur&&db[cur]&&!db[cur].touched)delete db[cur]}
 if(!cur||!db[cur])newRec();
 function show(f,d){const v=d[f[0]];if(f[1]=='select')return v===''||v==null?'':T(f[4][+v]);
- if(f[1]=='money')return fmM(v);if(f[1]=='check')return(v||[]).map(i=>T(f[4][i])).join(lang=='fa'?'، ':', ');return v||''}
+ if(f[1]=='date')return fd(v);if(f[1]=='money')return fmM(v);if(f[1]=='check')return(v||[]).map(i=>T(f[4][i])).join(lang=='fa'?'، ':', ');return v||''}
 function fld(f,d){const[k,ty,lb,w,op]=f,v=d[k]??'';let h;
  if(ty=='textarea')h=`<textarea data-k="${k}" rows="3">${esc(v)}</textarea>`;
  else if(ty=='select')h=`<select data-k="${k}"><option value="">—</option>${op.map((o,i)=>`<option value="${i}"${v===String(i)?' selected':''}>${T(o)}</option>`).join('')}</select>`;
@@ -177,6 +182,9 @@ function spaces(d){const num=(i,f,v,m)=>`<input type="number" inputmode="${m}" d
  (kv==='o'?`<input type="text" class="cn" data-s="${i}" data-f="n" placeholder="${u('sn')}" value="${esc(s.n)}">`:'')+
  `<div class="l2"><div><label>${u('sq')}</label>${num(i,'q',s.q??'1','numeric')}</div><div><label>${u('sc')}</label>${num(i,'c',s.c,'numeric')}</div><div><label>${u('sa')}</label>${num(i,'a',s.a,'decimal')}</div></div></div>`}).join('')+
  `<button id="add">${u('add')}</button><div class="tot">${u('total')}: <span id="tot"></span> ${u('m2')}</div>`}
+function meets(d){d.meets=d.meets||[bm()];
+ const mi=(i,f,v,ty)=>`<input type="${ty||'text'}" data-mt="${i}" data-f="${f}" value="${esc(v)}">`,ma=(i,f,v)=>`<textarea rows="3" data-mt="${i}" data-f="${f}">${esc(v)}</textarea>`;
+ return`<div class="tip">ℹ️ ${u('mtip')}</div>`+d.meets.map((m,i)=>`<div class="sr"><div class="l1"><b class="mh">${u('mt')} ${(i+1).toLocaleString(lang=='fa'?'fa-IR':'en-US')}</b><button class="x" data-mdel="${i}" aria-label="x">×</button></div><div class="g" style="margin-top:8px"><div class="fl"><label>${u('mdt')}</label>${mi(i,'dt',m.dt,'date')}</div><div class="fl"><label>${u('mnx')}</label>${mi(i,'nx',m.nx,'date')}</div><div class="fl w"><label>${u('mat')}</label>${mi(i,'at',m.at)}</div><div class="fl w"><label>${u('msb')}</label>${mi(i,'sub',m.sub)}</div><div class="fl w"><label>${u('mmn')}</label>${ma(i,'mn',m.mn)}</div><div class="fl w"><label>${u('mdc')}</label>${ma(i,'dec',m.dec)}</div></div><button class="pri" data-mp="${i}" style="margin-top:10px">${u('mpr')}</button></div>`).join('')+`<button id="addm">${u('madd')}</button>`}
 function tot(){const e=$('#tot');if(e)e.textContent=fmtN(tarea(D()))}
 function render(){
  document.documentElement.lang=lang;document.documentElement.dir=lang=='fa'?'rtl':'ltr';
@@ -187,7 +195,7 @@ function render(){
  $('#sn').innerHTML=S.map((s,i)=>`<button data-go="${i}" class="${i==step?'on':i<step?'dn':''}" title="${T(s.t)}">${i+1}</button>`).join('');
  const s=S[step],d=D();
  $('#stt').innerHTML=`${u('step')} ${(step+1).toLocaleString(lang=='fa'?'fa-IR':'en-US')}: ${T(s.t)}${s.e?`<span class="bd">${u('eo')}</span>`:''}`;
- $('#fm').innerHTML=s.sp?spaces(d):`<div class="g">${s.f.map(f=>fld(f,d)).join('')}</div>`+(s.calc?`<div class="calc" id="calc"></div><label class="inc"><input type="checkbox" data-pm${d.pm?' checked':''}>${u('inc')}</label>`:'');
+ $('#fm').innerHTML=s.sp?spaces(d):s.mt?meets(d):`<div class="g">${s.f.map(f=>fld(f,d)).join('')}</div>`+(s.calc?`<div class="calc" id="calc"></div><label class="inc"><input type="checkbox" data-pm${d.pm?' checked':''}>${u('inc')}</label>`:'');
  $('#pv').style.visibility=step?'visible':'hidden';
  $('#nx').textContent=step==S.length-1?u('fin'):u('next');
  tot();calc();
@@ -202,16 +210,20 @@ function calc(){const e=$('#calc');if(!e)return;const d=D(),n=x=>parseFloat(x)||
  if(fl&&fp&&al&&fl*fp>al)w.push(u('w2'));
  if(sp&&al&&sp>al)w.push(u('w3'));
  e.innerHTML=r.map(x=>`<div>${x}</div>`).join('')+w.map(x=>`<div class="w1">${x}</div>`).join('')+(!w.length&&al?`<div class="ok">${u('ok')}</div>`:'')}
-function pr(){const d=D();
- let h=`<div class="ph"><div><b>${u('sum')}</b><small>${esc(d.pname||'')}</small></div><div>${esc(d.date||today())}</div></div>`;
- S.forEach(s=>{if(s.e&&!d.pm)return;h+=`<h3>${T(s.t)}</h3>`;
+function mpage(d,m){const p=(l,v,c)=>`<div class="${c||''}"><span>${u(l)}</span><p>${esc(v)||'—'}</p></div>`;
+ return`<div class="mp"><div class="ph"><div><b>${u('minu')}</b><small>${esc(d.pname||'')} ${d.owner?'— '+esc(d.owner):''}</small></div><div>${esc(fd(m.dt))}</div></div><div class="pg">${p('mdt',fd(m.dt))}${p('mnx',fd(m.nx))}${p('mat',m.at,'w')}${p('msb',m.sub,'w')}${p('mmn',m.mn,'w big')}${p('mdc',m.dec,'w big')}</div><div class="sg"><div>${u('sg1')}</div><div>${u('sg2')}</div></div></div>`}
+function pr(only){const d=D(),ms=d.meets||[];
+ if(only!=null&&ms[only]){$('#print').innerHTML=mpage(d,ms[only]);return}
+ let h=`<div class="ph"><div><b>${u('sum')}</b><small>${esc(d.pname||'')}</small></div><div>${esc(fd(d.date||today()))}</div></div>`;
+ S.forEach(s=>{if(s.mt||(s.e&&!d.pm))return;h+=`<h3>${T(s.t)}</h3>`;
   if(s.sp)h+=`<table><tr><th>${u('sn')}</th><th>${u('sq')}</th><th>${u('sc')}</th><th>${u('sa')}</th></tr>${d.spaces.filter(x=>sname(x)||x.c||x.a).map(x=>`<tr><td>${esc(sname(x))}</td><td>${esc(x.q??'1')}</td><td>${esc(x.c)}</td><td>${esc(x.a)}</td></tr>`).join('')}<tr><th colspan="3">${u('total')} (${u('m2')})</th><th>${fmtN(tarea(d))}</th></tr></table>`;
   else h+='<div class="pg">'+s.f.map(f=>`<div class="${f[3]?'w':''}"><span>${T(f[2])}</span><p>${esc(show(f,d))||'—'}</p></div>`).join('')+'</div>'});
- $('#print').innerHTML=h}
-function doPrint(){try{pr()}catch(e){console.error(e)}try{window.print()}catch(e){alert(u('frm'))}}
+ h+=ms.filter(m=>m.at||m.sub||m.mn||m.dec).map(m=>mpage(d,m)).join('');$('#print').innerHTML=h}
+let po=null;
+function doPrint(i){po=i==null?null:i;try{pr(po)}catch(e){console.error(e)}try{window.print()}catch(e){alert(u('frm'))}}
 let old;
-addEventListener('beforeprint',()=>{pr();old=document.title;const d=D();document.title=[d.owner,d.pname].filter(Boolean).join(' - ')||u('title')});
-addEventListener('afterprint',()=>{if(old)document.title=old});
+addEventListener('beforeprint',()=>{pr(po);old=document.title;const d=D();document.title=po!=null&&d.meets[po]?[d.owner,u('minu'),fd(d.meets[po].dt)].filter(Boolean).join(' - '):[d.owner,d.pname].filter(Boolean).join(' - ')||u('title')});
+addEventListener('afterprint',()=>{if(old)document.title=old;po=null});
 function save(){const d=D();d.upd=Date.now();sv('db',db);sv('cur',cur);
  $('#st').textContent='✓ '+u('saved')+' · '+new Date().toLocaleTimeString(lang=='fa'?'fa-IR':'en-GB',{hour:'2-digit',minute:'2-digit'})}
 document.addEventListener('input',e=>{const t=e.target,d=D();
@@ -221,6 +233,7 @@ document.addEventListener('input',e=>{const t=e.target,d=D();
   else if(t.dataset.m)d[k]=fmtMoney(t);
   else d[k]=t.value}
  else if(t.dataset.s!=null){d.spaces[t.dataset.s][t.dataset.f]=t.value;tot()}
+ else if(t.dataset.mt!=null)d.meets[t.dataset.mt][t.dataset.f]=t.value;
  else if(t.dataset.sk!=null){const s=d.spaces[t.dataset.sk];s.k=t.value;if(t.value!=='o')s.n='';d.touched=1;save();render();return}
  else if(t.dataset.pm!=null)d.pm=t.checked;
  else return;
@@ -239,11 +252,14 @@ document.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)r
  else if(t.dataset.op){prune();cur=t.dataset.op;sv('cur',cur);step=0;sv('db',db);$('#dg').close();render()}
  else if(t.dataset.rm){if(confirm(u('dc'))){delete db[t.dataset.rm];if(t.dataset.rm==cur)newRec();sv('db',db);list();render()}}
  else if(t.id=='ex'){const b=new Blob([JSON.stringify(db)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='client-briefs-'+today()+'.json';document.body.appendChild(a);a.click();a.remove()}
+ else if(t.id=='addm'){d.meets.push(bm());d.touched=1;save();render()}
+ else if(t.dataset.mdel!=null){d.meets.splice(+t.dataset.mdel,1);if(!d.meets.length)d.meets.push(bm());save();render()}
+ else if(t.dataset.mp!=null)doPrint(+t.dataset.mp)
  else if(t.id=='im')$('#fi').click()});
 $('#fi').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();
  r.onload=()=>{try{Object.assign(db,JSON.parse(r.result));sv('db',db);list();render()}catch(x){alert('JSON error')}};r.readAsText(f);e.target.value=''});
 function list(){const ids=Object.keys(db).filter(i=>db[i].touched||i==cur).sort((a,b)=>(db[b].upd||0)-(db[a].upd||0));
- $('#rl').innerHTML=ids.map(i=>{const d=db[i];return`<div class="rc"><div><b>${esc(d.owner||d.pname||u('none'))}</b><small>${esc(d.pname&&d.owner?d.pname:'')} ${esc(d.date||'')}</small></div><div><button data-op="${i}">${u('open')}</button> <button data-rm="${i}" class="x" style="font-size:14px;padding:6px 10px">${u('del')}</button></div></div>`}).join('')}
+ $('#rl').innerHTML=ids.map(i=>{const d=db[i];return`<div class="rc"><div><b>${esc(d.owner||d.pname||u('none'))}</b><small>${esc(d.pname&&d.owner?d.pname:'')} ${esc(fd(d.date))}</small></div><div><button data-op="${i}">${u('open')}</button> <button data-rm="${i}" class="x" style="font-size:14px;padding:6px 10px">${u('del')}</button></div></div>`}).join('')}
 render();
 try{if(window.top!==window.self)$('#fr').hidden=false}catch(e){$('#fr').hidden=false}
 </script>

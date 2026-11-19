@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>فرم نیازسنجی پروژه</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--b:#1e5bd8;--b2:#e8f0ff;--ink:#14213d;--mut:#5b6b8a;--ln:#d3e0fa}
+html[lang=fa]{--f:'IBM Plex Sans Arabic','IBM Plex Sans',Vazirmatn,Tahoma,'Segoe UI',system-ui,sans-serif}
+html[lang=en]{--f:'IBM Plex Sans','IBM Plex Sans Arabic','Segoe UI',system-ui,-apple-system,Roboto,'Helvetica Neue',Arial,sans-serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;color:var(--ink);background:linear-gradient(180deg,#eef4ff,#fff 45%);font:16px/1.7 var(--f)}
+.wm{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:0;overflow:hidden}
+.wm span{font-size:min(15vw,180px);font-weight:700;letter-spacing:0;white-space:nowrap;transform:rotate(-22deg);background:linear-gradient(135deg,#1e5bd8,#7db0ff);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.1;user-select:none}
+#app{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:16px}
+header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:14px}
+h1{margin:0;font-size:22px;font-weight:700;color:var(--b)}
+header p{margin:0;color:var(--mut);font-size:14px}
+.tb{display:flex;gap:8px;flex-wrap:wrap}
+button{font:inherit;font-size:14px;font-weight:500;cursor:pointer;border:1px solid var(--ln);background:#fff;color:var(--b);border-radius:10px;padding:8px 14px;min-height:40px}
+button:hover{background:var(--b2)}
+button.pri{background:var(--b);color:#fff;border-color:var(--b)}
+button.pri:hover{background:#174bb5}
+nav{display:flex;gap:6px;margin-bottom:12px}
+nav button{flex:1;padding:6px 4px;font-size:13px;min-height:36px;border-radius:8px}
+nav .on{background:var(--b);color:#fff;border-color:var(--b)}
+nav .dn{background:var(--b2)}
+.card{background:rgba(255,255,255,.88);border:1px solid var(--ln);border-radius:16px;padding:22px;box-shadow:0 8px 30px rgba(30,91,216,.08)}
+h2{margin:0 0 16px;font-size:19px;font-weight:600}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fl.w{grid-column:1/-1}
+.fl>label,.lb{display:block;font-size:13.5px;font-weight:500;color:var(--mut);margin-bottom:4px}
+input[type=text],input[type=number],input[type=tel],input[type=email],input[type=date],select,textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1px solid var(--ln);border-radius:10px;padding:9px 12px;min-height:42px;outline:0}
+input:focus,select:focus,textarea:focus{border-color:var(--b);box-shadow:0 0 0 3px rgba(30,91,216,.15)}
+input[type=number],input[type=tel],input[type=email],input[type=date]{direction:ltr}
+html[dir=rtl] input[type=number],html[dir=rtl] input[type=tel],html[dir=rtl] input[type=email],html[dir=rtl] input[type=date]{text-align:right}
+textarea{resize:vertical}
+.chk{display:flex;flex-wrap:wrap;gap:8px}
+.chk label{display:flex;align-items:center;gap:6px;border:1px solid var(--ln);background:#fff;border-radius:999px;padding:6px 12px;cursor:pointer;font-size:14px}
+.chk input{accent-color:var(--b);width:16px;height:16px}
+.row{display:grid;grid-template-columns:1fr 72px 84px 36px;gap:8px;margin-bottom:8px}
+.row.h{font-size:12.5px;color:var(--mut);margin-bottom:2px}
+.row input{padding:8px;min-width:0}
+.x{padding:0;font-size:20px;color:#c0392b}
+.tot{margin-top:10px;font-weight:600;color:var(--b)}
+.nv{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:22px}
+#st{font-size:13px;color:var(--mut);text-align:center}
+dialog{border:1px solid var(--ln);border-radius:16px;padding:20px;max-width:520px;width:92%;color:var(--ink);background:#fff;font:inherit}
+dialog::backdrop{background:rgba(20,33,61,.35)}
+dialog h3{margin:0 0 10px;font-size:17px}
+.rc{display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid var(--ln);border-radius:10px;padding:8px 12px;margin-bottom:8px}
+.rc small{color:var(--mut);display:block}
+.ar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.bd{display:inline-block;font-size:12px;font-weight:600;background:#fff3cd;color:#8a5a00;border:1px solid #f0d58a;border-radius:999px;padding:1px 10px;margin-inline-start:8px;vertical-align:middle}
+.calc{margin-top:16px;background:var(--b2);border:1px solid var(--ln);border-radius:12px;padding:12px 16px;font-size:14.5px}
+.calc div{margin:2px 0}.calc .w1{color:#b3261e;font-weight:600}.calc .ok{color:#1a7f43;font-weight:600}
+.inc{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:14px;cursor:pointer}.inc input{accent-color:var(--b);width:16px;height:16px}
+[hidden]{display:none!important}
+.tip{background:var(--b2);border:1px solid var(--ln);border-radius:10px;padding:8px 12px;font-size:13.5px;margin-bottom:12px}
+.sr{border:1px solid var(--ln);border-radius:12px;padding:10px;margin-bottom:10px;background:#fff}
+.sr .l1{display:flex;gap:8px}.sr .l1 select{flex:1;min-width:0}.sr .cn{margin-top:8px}
+.sr .l2{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.sr label{display:block;font-size:12px;color:var(--mut);margin-bottom:2px;line-height:1.4}.sr .l2 input{padding:8px}
+input[data-m]{direction:ltr;letter-spacing:.02em}html[dir=rtl] input[data-m]{text-align:right}
+#print{display:none}
+@media(max-width:560px){.g{grid-template-columns:1fr}.card{padding:16px}h1{font-size:19px}}
+@page{size:A4;margin:14mm}
+@media print{
+ body{background:#fff;font-size:11.5pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ #app,dialog{display:none!important}
+ #print{display:block;position:relative;z-index:1}
+ .wm span{background:none;color:#1e5bd8;opacity:.08}
+ .ph{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid #1e5bd8;padding-bottom:8px;margin-bottom:10px}
+ .ph b{font-size:18pt;color:#1e5bd8}.ph small{display:block;color:#5b6b8a}
+ #print h3{margin:14px 0 6px;font-size:12.5pt;color:#1e5bd8;background:#e8f0ff;padding:3px 10px;border-radius:6px;break-after:avoid}
+ .pg{display:grid;grid-template-columns:1fr 1fr;gap:6px 16px}
+ .pg .w{grid-column:1/-1}
+ .pg span{font-size:9.5pt;color:#5b6b8a}
+ .pg p{margin:0;padding-bottom:2px;border-bottom:1px solid #d3e0fa;min-height:1.6em;white-space:pre-wrap}
+ table{width:100%;border-collapse:collapse}
+ th,td{border:1px solid #d3e0fa;padding:3px 8px;text-align:start;font-size:10.5pt}
+ th{background:#f1f6ff}
+ .pg>div,tr{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="wm"><span id="wmt"></span></div>
+<div id="app">
+ <div id="fr" class="tip" hidden data-u="frm"></div>
+ <header>
+  <div><h1 data-u="title"></h1><p data-u="sub"></p></div>
+  <div class="tb"><button id="bl"></button><button id="brc" data-u="recs"></button><button id="bp" class="pri" data-u="print"></button></div>
+ </header>
+ <nav id="sn"></nav>
+ <main class="card"><h2 id="stt"></h2><div id="fm"></div>
+  <div class="nv"><button id="pv" data-u="prev"></button><span id="st"></span><button id="nx" class="pri"></button></div>
+ </main>
+</div>
+<div id="print"></div>
+<dialog id="dg">
+ <h3 data-u="wm"></h3>
+ <input type="text" id="wmi" maxlength="40">
+ <h3 style="margin-top:16px" data-u="recs"></h3>
+ <div id="rl"></div>
+ <div class="ar"><button id="nw" class="pri" data-u="newr"></button><button id="ex" data-u="exp"></button><button id="im" data-u="imp"></button><input type="file" id="fi" accept=".json,application/json" hidden></div>
+ <button id="cl" data-u="close"></button>
+</dialog>
+<script>
+const $=s=>document.querySelector(s),mem={};
+const ld=(k,d)=>{try{const v=localStorage.getItem('brief.'+k);return v?JSON.parse(v):d}catch(e){return mem[k]??d}};
+const sv=(k,v)=>{try{localStorage.setItem('brief.'+k,JSON.stringify(v))}catch(e){mem[k]=v}};
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const U={
+fa:{title:'فرم نیازسنجی پروژه',sub:'اطلاعات شما به‌صورت خودکار ذخیره می‌شود',next:'مرحله بعد',prev:'قبلی',print:'چاپ / PDF',recs:'پرونده‌ها',newr:'پرونده جدید',saved:'ذخیره شد',wm:'متن واترمارک',exp:'خروجی بکاپ',imp:'ورود بکاپ',open:'باز کردن',del:'حذف',none:'بدون نام',add:'+ افزودن فضا',sn:'نام فضا',sc:'ظرفیت هر واحد (نفر)',sa:'متراژ هر واحد (m²)',total:'مجموع متراژ تقریبی',close:'بستن',dc:'این پرونده حذف شود؟',fin:'پایان و چاپ',step:'مرحله',sum:'خلاصه نیازسنجی پروژه',m2:'متر مربع',eo:'مخصوص مهندس',tip:'ظرفیت و متراژ را برای «یک واحد» از هر فضا وارد کنید و تعداد واحدها را در «تعداد» بنویسید. مثال: ۳ اتاق خواب ۱۵ متری ← تعداد ۳، متراژ ۱۵.',pick:'انتخاب فضا…',oth:'سایر (نوشتن دستی)…',sq:'تعداد',frm:'برای چاپ یا PDF، فایل را دانلود کنید و مستقیماً در مرورگر (Chrome / Safari / Edge) باز کنید.',inc:'درج این بخش در خروجی چاپ',al:'زیربنای مجاز (تراکم × مساحت زمین)',fp:'سطح اشغال (پی)',fb:'طبقات قابل‌اجرا طبق تراکم',nl:'مساحت زمین را در مرحله ۱ وارد کنید.',w1:'⚠ تعداد طبقات مدنظر از حداکثر مجاز بیشتر است.',w2:'⚠ با سطح اشغال کامل، زیربنا از تراکم مجاز بیشتر می‌شود؛ باید سطح اشغال کمتر شود.',w3:'⚠ مجموع متراژ فضاها از زیربنای مجاز بیشتر است.',ok:'✓ با اطلاعات واردشده، مغایرتی دیده نشد.'},
+en:{title:'Project Client Brief',sub:'Your answers are saved automatically',next:'Next',prev:'Back',print:'Print / PDF',recs:'Records',newr:'New record',saved:'Saved',wm:'Watermark text',exp:'Export backup',imp:'Import backup',open:'Open',del:'Delete',none:'Untitled',add:'+ Add space',sn:'Space name',sc:'Capacity per unit (persons)',sa:'Area per unit (m²)',total:'Approx. total area',close:'Close',dc:'Delete this record?',fin:'Finish & print',step:'Step',sum:'Project Brief Summary',m2:'m²',eo:'Engineer only',tip:'Enter capacity and area for ONE single unit of each space, and put the number of units in Qty. Example: 3 bedrooms of 15 m² each → Qty 3, Area 15.',pick:'Select a space…',oth:'Other (type manually)…',sq:'Qty',frm:'To print or save as PDF, download this file and open it directly in your browser (Chrome / Safari / Edge).',inc:'Include this section in printout',al:'Allowed floor area (density × land)',fp:'Footprint (coverage)',fb:'Floors allowed by density',nl:'Enter land area in step 1.',w1:'⚠ Desired floors exceed the maximum allowed.',w2:'⚠ At full coverage the floor area exceeds allowed density; coverage must be reduced.',w3:'⚠ Total space area exceeds the allowed floor area.',ok:'✓ No conflict found with the entered data.'}};
+const SP=[['اتاق خواب','Bedroom'],['اتاق خواب مستر','Master bedroom'],['پذیرایی / نشیمن','Living room'],['آشپزخانه','Kitchen'],['سرویس بهداشتی','Restroom'],['حمام','Bathroom'],['ورودی / هال','Entrance / Hall'],['لابی','Lobby'],['راه‌پله','Staircase'],['آسانسور','Elevator'],['پارکینگ','Parking'],['انباری','Storage'],['اتاق کار / دفتر','Office / Study'],['اتاق جلسات','Meeting room'],['سالن اجتماعات','Conference hall'],['فروشگاه / مغازه','Shop / Retail'],['بالکن / تراس','Balcony / Terrace'],['حیاط / فضای سبز','Yard / Garden'],['موتورخانه / تأسیسات','Mechanical room'],['نمازخانه','Prayer room']];
+const O={
+main:[['مسکونی','Residential'],['تجاری','Commercial'],['اداری','Office'],['آموزشی','Educational'],['درمانی','Healthcare'],['صنعتی','Industrial'],['گردشگری / فرهنگی','Hospitality / Cultural'],['ترکیبی','Mixed-use']],
+style:[['مدرن','Modern'],['کلاسیک','Classic'],['نئوکلاسیک','Neoclassical'],['ایرانی / سنتی','Persian / Traditional'],['مینیمال / معاصر','Minimal / Contemporary'],['نیاز به مشاوره','Need advice']],
+struct:[['اسکلت فلزی','Steel frame'],['بتن آرمه','Reinforced concrete'],['مختلط','Composite'],['سبک (LSF)','Light steel (LSF)'],['نیاز به مشاوره','Need advice']],
+mep:[['تهویه مطبوع','HVAC'],['آسانسور','Elevator'],['اطفای حریق','Fire protection'],['پنل خورشیدی','Solar panels'],['هوشمندسازی','Smart building'],['پارکینگ','Parking'],['ژنراتور / برق اضطراری','Backup power']],
+cur:[['تومان','Toman'],['ریال','Rial'],['دلار','USD'],['یورو','EUR']],
+pri:[['کاهش هزینه','Lower cost'],['سرعت اجرا','Fast delivery'],['کیفیت بالا','High quality'],['تعادل هر سه','Balanced']]};
+const S=[
+{t:['کارفرما و پروژه','Client & Project'],f:[
+['owner','text',['نام مالک / کارفرما','Owner / Client name']],['phone','tel',['شماره تماس','Phone']],
+['email','email',['ایمیل','Email']],['pname','text',['نام پروژه','Project name']],
+['addr','text',['آدرس / شهر زمین','Site address / city'],1],['land','number',['مساحت زمین (m²)','Land area (m²)']],['date','date',['تاریخ جلسه','Meeting date']]]},
+{t:['هدف و کاربری','Purpose & Use'],f:[
+['goal','textarea',['هدف از ساخت','Purpose of construction'],1],['main','select',['کاربری اصلی','Primary use'],0,O.main],
+['sec','text',['کاربری فرعی','Secondary use']],['users','text',['کاربران اصلی','Main users']],['ucount','number',['تعداد کاربران','Number of users']],['floors','number',['تعداد طبقات مدنظر کارفرما','Desired number of floors']]]},
+{t:['ضوابط شهرداری (دستور نقشه)','Municipal Regulations'],e:1,calc:1,f:[
+['dens','number',['تراکم مجاز (درصد)','Allowed density (%)']],['cov','number',['سطح اشغال مجاز (درصد)','Max coverage (%)']],
+['maxfl','number',['حداکثر تعداد طبقات','Max floors']],['maxh','number',['حداکثر ارتفاع (متر)','Max height (m)']],
+['zone','text',['کاربری مجاز طبق طرح تفصیلی','Permitted use (zoning)'],1],['setb','text',['عقب‌نشینی‌ها / بر زمین','Setbacks / frontage'],1],
+['park','text',['پارکینگ الزامی','Required parking'],1]]},
+{t:['فضاها و ظرفیت','Spaces & Capacity'],sp:1},
+{t:['عملکرد و فنی','Function & Technical'],f:[
+['func','textarea',['نیازهای عملکردی','Functional needs'],1],['style','select',['سبک معماری','Architectural style'],0,O.style],
+['struct','select',['سازه پیشنهادی','Structure type'],0,O.struct],['mep','check',['نیازهای تأسیساتی','MEP needs'],1,O.mep]]},
+{t:['بودجه و زمان','Budget & Schedule'],f:[
+['budget','money',['بودجه پروژه','Project budget']],['cur','select',['واحد پول','Currency'],0,O.cur],
+['start','date',['زمان شروع مدنظر','Desired start']],['dur','number',['مدت اجرا (ماه)','Duration (months)']],
+['prio','select',['اولویت اصلی','Main priority'],1,O.pri]]}];
+let lang=ld('lang','fa'),db=ld('db',{}),cur=ld('cur',null),step=0,tm;
+const today=()=>new Date().toISOString().slice(0,10);
+const D=()=>db[cur],T=a=>a[lang=='fa'?0:1],u=k=>U[lang][k];
+const fmM=v=>String(v??'').replace(/\B(?=(\d{3})+(?!\d))/g,',');
+const toEn=x=>x.replace(/[۰-۹]/g,c=>c.charCodeAt(0)-1776).replace(/[٠-٩]/g,c=>c.charCodeAt(0)-1632);
+function fmtMoney(t){const pos=t.selectionStart,b=toEn(t.value.slice(0,pos)).replace(/\D/g,'').length,raw=toEn(t.value).replace(/\D/g,'');
+ t.value=fmM(raw);let c=0,i=0;for(;i<t.value.length&&c<b;i++)if(/\d/.test(t.value[i]))c++;try{t.setSelectionRange(i,i)}catch(e){}return raw}
+const qn=s=>s.q===''||s.q==null?1:(parseFloat(s.q)||0);
+const tarea=d=>d.spaces.reduce((a,s)=>a+(parseFloat(s.a)||0)*qn(s),0);
+const fmtN=x=>x.toLocaleString(lang=='fa'?'fa-IR':'en-US',{maximumFractionDigits:1});
+const sname=s=>{const k=s.k??(s.n?'o':'');return k===''||k==='o'?(s.n||''):T(SP[+k])};
+function newRec(){prune();cur=Date.now().toString(36);db[cur]={date:today(),spaces:[{k:'',n:'',c:'',a:'',q:'1'}],mep:[]};sv('cur',cur);sv('db',db);step=0}
+function prune(){if(cur&&db[cur]&&!db[cur].touched)delete db[cur]}
+if(!cur||!db[cur])newRec();
+function show(f,d){const v=d[f[0]];if(f[1]=='select')return v===''||v==null?'':T(f[4][+v]);
+ if(f[1]=='money')return fmM(v);if(f[1]=='check')return(v||[]).map(i=>T(f[4][i])).join(lang=='fa'?'، ':', ');return v||''}
+function fld(f,d){const[k,ty,lb,w,op]=f,v=d[k]??'';let h;
+ if(ty=='textarea')h=`<textarea data-k="${k}" rows="3">${esc(v)}</textarea>`;
+ else if(ty=='select')h=`<select data-k="${k}"><option value="">—</option>${op.map((o,i)=>`<option value="${i}"${v===String(i)?' selected':''}>${T(o)}</option>`).join('')}</select>`;
+ else if(ty=='check')h=`<div class="chk">${op.map((o,i)=>`<label><input type="checkbox" data-k="${k}" data-i="${i}"${(d[k]||[]).includes(i)?' checked':''}><span>${T(o)}</span></label>`).join('')}</div>`;
+ else if(ty=='money')h=`<input type="text" inputmode="numeric" data-k="${k}" data-m="1" value="${fmM(v)}" autocomplete="off">`;
+ else h=`<input type="${ty}" data-k="${k}" value="${esc(v)}"${ty=='number'?' inputmode="decimal"':''} autocomplete="off">`;
+ return`<div class="fl${w?' w':''}">${ty=='check'?`<div class="lb">${T(lb)}</div>`:`<label>${T(lb)}</label>`}${h}</div>`}
+function spaces(d){const num=(i,f,v,m)=>`<input type="number" inputmode="${m}" data-s="${i}" data-f="${f}" value="${esc(v)}">`;
+ return`<div class="tip">ℹ️ ${u('tip')}</div>`+d.spaces.map((s,i)=>{const kv=s.k??(s.n?'o':'');
+ return`<div class="sr"><div class="l1"><select data-sk="${i}"><option value="">${u('pick')}</option>${SP.map((o,j)=>`<option value="${j}"${kv===String(j)?' selected':''}>${T(o)}</option>`).join('')}<option value="o"${kv==='o'?' selected':''}>${u('oth')}</option></select><button class="x" data-del="${i}" aria-label="x">×</button></div>`+
+ (kv==='o'?`<input type="text" class="cn" data-s="${i}" data-f="n" placeholder="${u('sn')}" value="${esc(s.n)}">`:'')+
+ `<div class="l2"><div><label>${u('sq')}</label>${num(i,'q',s.q??'1','numeric')}</div><div><label>${u('sc')}</label>${num(i,'c',s.c,'numeric')}</div><div><label>${u('sa')}</label>${num(i,'a',s.a,'decimal')}</div></div></div>`}).join('')+
+ `<button id="add">${u('add')}</button><div class="tot">${u('total')}: <span id="tot"></span> ${u('m2')}</div>`}
+function tot(){const e=$('#tot');if(e)e.textContent=fmtN(tarea(D()))}
+function render(){
+ document.documentElement.lang=lang;document.documentElement.dir=lang=='fa'?'rtl':'ltr';
+ document.querySelectorAll('[data-u]').forEach(e=>e.textContent=u(e.dataset.u));
+ $('#bl').textContent=lang=='fa'?'EN':'فارسی';
+ $('#wmt').textContent=ld('wm','منه مهندس')||'منه مهندس';
+ document.title=u('title');
+ $('#sn').innerHTML=S.map((s,i)=>`<button data-go="${i}" class="${i==step?'on':i<step?'dn':''}" title="${T(s.t)}">${i+1}</button>`).join('');
+ const s=S[step],d=D();
+ $('#stt').innerHTML=`${u('step')} ${(step+1).toLocaleString(lang=='fa'?'fa-IR':'en-US')}: ${T(s.t)}${s.e?`<span class="bd">${u('eo')}</span>`:''}`;
+ $('#fm').innerHTML=s.sp?spaces(d):`<div class="g">${s.f.map(f=>fld(f,d)).join('')}</div>`+(s.calc?`<div class="calc" id="calc"></div><label class="inc"><input type="checkbox" data-pm${d.pm?' checked':''}>${u('inc')}</label>`:'');
+ $('#pv').style.visibility=step?'visible':'hidden';
+ $('#nx').textContent=step==S.length-1?u('fin'):u('next');
+ tot();calc();
+}
+function calc(){const e=$('#calc');if(!e)return;const d=D(),n=x=>parseFloat(x)||0,land=n(d.land),al=land*n(d.dens)/100,fp=land*n(d.cov)/100,
+ sp=tarea(d),fl=n(d.floors),mf=n(d.maxfl),f=x=>x.toLocaleString(lang=='fa'?'fa-IR':'en-US',{maximumFractionDigits:1}),r=[],w=[];
+ if(!land){e.innerHTML=`<div>${u('nl')}</div>`;return}
+ if(al)r.push(`${u('al')}: <b>${f(al)}</b> ${u('m2')}`);
+ if(fp)r.push(`${u('fp')}: <b>${f(fp)}</b> ${u('m2')}`);
+ if(al&&fp)r.push(`${u('fb')}: <b>${f(al/fp)}</b>`);
+ if(fl&&mf&&fl>mf)w.push(u('w1'));
+ if(fl&&fp&&al&&fl*fp>al)w.push(u('w2'));
+ if(sp&&al&&sp>al)w.push(u('w3'));
+ e.innerHTML=r.map(x=>`<div>${x}</div>`).join('')+w.map(x=>`<div class="w1">${x}</div>`).join('')+(!w.length&&al?`<div class="ok">${u('ok')}</div>`:'')}
+function pr(){const d=D();
+ let h=`<div class="ph"><div><b>${u('sum')}</b><small>${esc(d.pname||'')}</small></div><div>${esc(d.date||today())}</div></div>`;
+ S.forEach(s=>{if(s.e&&!d.pm)return;h+=`<h3>${T(s.t)}</h3>`;
+  if(s.sp)h+=`<table><tr><th>${u('sn')}</th><th>${u('sq')}</th><th>${u('sc')}</th><th>${u('sa')}</th></tr>${d.spaces.filter(x=>sname(x)||x.c||x.a).map(x=>`<tr><td>${esc(sname(x))}</td><td>${esc(x.q??'1')}</td><td>${esc(x.c)}</td><td>${esc(x.a)}</td></tr>`).join('')}<tr><th colspan="3">${u('total')} (${u('m2')})</th><th>${fmtN(tarea(d))}</th></tr></table>`;
+  else h+='<div class="pg">'+s.f.map(f=>`<div class="${f[3]?'w':''}"><span>${T(f[2])}</span><p>${esc(show(f,d))||'—'}</p></div>`).join('')+'</div>'});
+ $('#print').innerHTML=h}
+function doPrint(){try{pr()}catch(e){console.error(e)}try{window.print()}catch(e){alert(u('frm'))}}
+let old;
+addEventListener('beforeprint',()=>{pr();old=document.title;const d=D();document.title=[d.owner,d.pname].filter(Boolean).join(' - ')||u('title')});
+addEventListener('afterprint',()=>{if(old)document.title=old});
+function save(){const d=D();d.upd=Date.now();sv('db',db);sv('cur',cur);
+ $('#st').textContent='✓ '+u('saved')+' · '+new Date().toLocaleTimeString(lang=='fa'?'fa-IR':'en-GB',{hour:'2-digit',minute:'2-digit'})}
+document.addEventListener('input',e=>{const t=e.target,d=D();
+ if(t.id=='wmi'){sv('wm',t.value);$('#wmt').textContent=t.value||'منه مهندس';return}
+ if(t.dataset.k){const k=t.dataset.k;
+  if(t.type=='checkbox'){const a=d[k]=d[k]||[],i=+t.dataset.i,p=a.indexOf(i);if(t.checked){if(p<0)a.push(i)}else if(p>=0)a.splice(p,1)}
+  else if(t.dataset.m)d[k]=fmtMoney(t);
+  else d[k]=t.value}
+ else if(t.dataset.s!=null){d.spaces[t.dataset.s][t.dataset.f]=t.value;tot()}
+ else if(t.dataset.sk!=null){const s=d.spaces[t.dataset.sk];s.k=t.value;if(t.value!=='o')s.n='';d.touched=1;save();render();return}
+ else if(t.dataset.pm!=null)d.pm=t.checked;
+ else return;
+ calc();d.touched=1;clearTimeout(tm);tm=setTimeout(save,250)});
+document.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;const d=D();
+ if(t.dataset.go!=null){step=+t.dataset.go;render()}
+ else if(t.id=='nx'){if(step==S.length-1)doPrint();else{step++;render();scrollTo(0,0)}}
+ else if(t.id=='pv'){step--;render();scrollTo(0,0)}
+ else if(t.id=='bp')doPrint();
+ else if(t.id=='bl'){lang=lang=='fa'?'en':'fa';sv('lang',lang);render()}
+ else if(t.id=='add'){d.spaces.push({k:'',n:'',c:'',a:'',q:'1'});d.touched=1;save();render()}
+ else if(t.dataset.del!=null){d.spaces.splice(+t.dataset.del,1);if(!d.spaces.length)d.spaces.push({k:'',n:'',c:'',a:'',q:'1'});save();render()}
+ else if(t.id=='brc'){list();$('#wmi').value=ld('wm','منه مهندس');$('#dg').showModal()}
+ else if(t.id=='cl')$('#dg').close();
+ else if(t.id=='nw'){newRec();$('#dg').close();render()}
+ else if(t.dataset.op){prune();cur=t.dataset.op;sv('cur',cur);step=0;sv('db',db);$('#dg').close();render()}
+ else if(t.dataset.rm){if(confirm(u('dc'))){delete db[t.dataset.rm];if(t.dataset.rm==cur)newRec();sv('db',db);list();render()}}
+ else if(t.id=='ex'){const b=new Blob([JSON.stringify(db)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='client-briefs-'+today()+'.json';document.body.appendChild(a);a.click();a.remove()}
+ else if(t.id=='im')$('#fi').click()});
+$('#fi').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();
+ r.onload=()=>{try{Object.assign(db,JSON.parse(r.result));sv('db',db);list();render()}catch(x){alert('JSON error')}};r.readAsText(f);e.target.value=''});
+function list(){const ids=Object.keys(db).filter(i=>db[i].touched||i==cur).sort((a,b)=>(db[b].upd||0)-(db[a].upd||0));
+ $('#rl').innerHTML=ids.map(i=>{const d=db[i];return`<div class="rc"><div><b>${esc(d.owner||d.pname||u('none'))}</b><small>${esc(d.pname&&d.owner?d.pname:'')} ${esc(d.date||'')}</small></div><div><button data-op="${i}">${u('open')}</button> <button data-rm="${i}" class="x" style="font-size:14px;padding:6px 10px">${u('del')}</button></div></div>`}).join('')}
+render();
+try{if(window.top!==window.self)$('#fr').hidden=false}catch(e){$('#fr').hidden=false}
+</script>
+</body>
+</html>
